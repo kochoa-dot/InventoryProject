@@ -1,6 +1,5 @@
 package com.inventory.Inventory.exception;
 
-import com.inventory.Inventory.model.Users;
 
 public class UsersNotFoundException extends RuntimeException {
     public UsersNotFoundException(Integer id_user){

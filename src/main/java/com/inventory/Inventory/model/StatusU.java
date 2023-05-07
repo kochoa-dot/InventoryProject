@@ -4,11 +4,11 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity @Data
-public class Colors {
+public class StatusU {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_color")
-    private int id_color;
-    private String color;
-
+    @Column(name = "id_status")
+    private int id_status;
+    @Column(name = "status_name")
+    private String statusName;
 }

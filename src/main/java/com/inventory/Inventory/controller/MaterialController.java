@@ -26,17 +26,17 @@ public class MaterialController {
         return materialService.getAllMaterial();
     }
 
-    @GetMapping("/getmaterialsbyid/{id_material}")
+    @GetMapping("/getMaterialById/{id_material}")
     public Material getMaterialById(@PathVariable Integer id_material){
         return materialService.getMaterialById(id_material);
     }
 
-    @PutMapping("/updatematerial/{id_material}")
+    @PutMapping("/updateMaterial/{id_material}")
     public Material updateMaterial(@RequestBody Material newmaterial, @PathVariable Integer id_material){
         return materialService.updateMaterial(newmaterial, id_material);
     }
 
-    @DeleteMapping("/deletematerial/{id_material}")
+    @DeleteMapping("/deleteMaterial/{id_material}")
     public String deleteMaterial(@PathVariable Integer id_material){
         return materialService.deleteMaterial(id_material);
     }

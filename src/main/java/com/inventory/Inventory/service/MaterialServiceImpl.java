@@ -1,7 +1,7 @@
 package com.inventory.Inventory.service;
 
 import com.inventory.Inventory.exception.MaterialNotFoundException;
-import com.inventory.Inventory.model.Material;
+import com.inventory.Inventory.model.Materials;
 import com.inventory.Inventory.repository.MaterialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,24 +14,25 @@ public class MaterialServiceImpl implements MaterialService{
     private MaterialRepository materialRepository;
 
     @Override
-    public Material saveMaterial(Material material) {
-        return materialRepository.save(material);
+    public String saveMaterial(Materials materials) {
+        materialRepository.save(materials);
+        return "new material has added";
     }
 
     @Override
-    public List<Material> getAllMaterial() {
+    public List<Materials> getAllMaterial() {
         return materialRepository.findAll();
     }
 
     @Override
-    public Material getMaterialById(Integer id_material) {
+    public Materials getMaterialById(Integer id_material) {
         return materialRepository.findById(id_material).orElseThrow(()-> new MaterialNotFoundException(id_material));
     }
 
     @Override
-    public Material updateMaterial(Material newMaterial, Integer id_material) {
+    public Materials updateMaterial(Materials newMaterials, Integer id_material) {
         return materialRepository.findById(id_material).map(material -> {
-            material.setMaterials(newMaterial.getMaterials());
+            material.setMaterial(newMaterials.getMaterial());
             return materialRepository.save(material);
         }).orElseThrow(()->new MaterialNotFoundException(id_material));
     }

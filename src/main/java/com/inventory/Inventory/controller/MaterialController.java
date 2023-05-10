@@ -1,7 +1,6 @@
 package com.inventory.Inventory.controller;
 
-import com.inventory.Inventory.model.Material;
-import com.inventory.Inventory.model.Roles;
+import com.inventory.Inventory.model.Materials;
 import com.inventory.Inventory.service.MaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,23 +15,22 @@ public class MaterialController {
     private MaterialService materialService;
 
     @PostMapping("/add")
-    public String add(@RequestBody Material material){
-        materialService.saveMaterial(material);
-        return "New Material added";
+    public String add(@RequestBody Materials materials){
+        return materialService.saveMaterial(materials);
     }
 
     @GetMapping("/getAll")
-    public List<Material> getAllMaterial(){
+    public List<Materials> getAllMaterial(){
         return materialService.getAllMaterial();
     }
 
     @GetMapping("/getMaterialById/{id_material}")
-    public Material getMaterialById(@PathVariable Integer id_material){
+    public Materials getMaterialById(@PathVariable Integer id_material){
         return materialService.getMaterialById(id_material);
     }
 
     @PutMapping("/updateMaterial/{id_material}")
-    public Material updateMaterial(@RequestBody Material newmaterial, @PathVariable Integer id_material){
+    public Materials updateMaterial(@RequestBody Materials newmaterial, @PathVariable Integer id_material){
         return materialService.updateMaterial(newmaterial, id_material);
     }
 

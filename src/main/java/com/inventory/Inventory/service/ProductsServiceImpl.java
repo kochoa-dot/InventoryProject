@@ -13,8 +13,9 @@ public class ProductsServiceImpl implements ProductsService{
     @Autowired
     private ProductsRepository productsRepository;
     @Override
-    public Products saveProducts(Products products) {
-        return productsRepository.save(products);
+    public String saveProducts(Products products) {
+        productsRepository.save(products);
+        return "New product has added";
     }
 
     @Override
@@ -23,20 +24,28 @@ public class ProductsServiceImpl implements ProductsService{
     }
 
     @Override
-    public Products getProductsById(Integer id_product) {
+    public Products getProductsById(Long id_product) {
         return productsRepository.findById(id_product).orElseThrow(()-> new ProductsNotFoundException(id_product));
     }
 
     @Override
-    public Products updateProducts(Products newProducts, Integer id_product) {
+    public Products updateProducts(Products newProducts, Long id_product) {
         return productsRepository.findById(id_product).map(products -> {
             products.setProduct(newProducts.getProduct());
+            products.setThickness(newProducts.getThickness());
+            products.setStock(newProducts.getStock());
+            products.setSizes(newProducts.getSizes());
+            products.setColors(newProducts.getColors());
+            products.setMaterials(newProducts.getMaterials());
+            products.setSuppliers(newProducts.getSuppliers());
+            products.setSellingPrice(newProducts.getSellingPrice());
+            products.setUnitPrice(newProducts.getSellingPrice());
             return productsRepository.save(products);
         }).orElseThrow(()->new ProductsNotFoundException(id_product));
     }
 
     @Override
-    public String deleteProducts(Integer id_product) {
+    public String deleteProducts(Long id_product) {
         if (!productsRepository.existsById(id_product)){
             throw new ProductsNotFoundException(id_product);
         }

@@ -5,14 +5,12 @@ import lombok.*;
 
 @Entity
 @Data
-@Getter @Setter @NoArgsConstructor @ToString
-
-public class Material {
+public class Materials {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_material")
     private int id_material;
     @Column(name = "material")
-    private String materials;
+    private String material;
 }

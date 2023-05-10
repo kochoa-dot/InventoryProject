@@ -8,7 +8,7 @@ public class Suppliers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_supplier")
-    private Long id;
+    private Long id_supplier;
     private String supplier;
     @Column(name = "NIT")
     private String nit;

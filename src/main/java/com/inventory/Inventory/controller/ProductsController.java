@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/product")
+@RequestMapping("/products")
 @CrossOrigin
 public class ProductsController {
     @Autowired
@@ -15,26 +15,27 @@ public class ProductsController {
 
     @PostMapping("/add")
     public String add(@RequestBody Products products){
-        productsService.saveProducts(products);
-        return "New product Added";
+        return productsService.saveProducts(products);
     }
+
     @GetMapping("/getAll")
-    public List<Products> getAllProduct(){
+    public List<Products> getAllUsers(){
         return productsService.getAllProducts();
     }
-    @GetMapping("/getproductsbyid/{id_products}")
-    public Products getProductsById(@PathVariable Integer id_products){
-        return productsService.getProductsById(id_products);
+
+    @GetMapping("/getProductById/{id_product}")
+    public Products getProductById(@PathVariable Long id_product){
+        return productsService.getProductsById(id_product);
     }
 
-    @PutMapping("/updateproducts/{id_products}")
-    public Products updateProducts(@RequestBody Products newProducts, @PathVariable Integer id_products){
-        return productsService.updateProducts(newProducts, id_products);
+    @PutMapping("/updateProduct/{id_product}")
+    public Products updateProduct(@RequestBody Products newProducts, @PathVariable Long id_product){
+        return productsService.updateProducts(newProducts, id_product);
     }
 
-    @DeleteMapping("/deleteproducts/{id_products}")
-    public String deleteProducts(@PathVariable Integer id_products){
-        return productsService.deleteProducts(id_products);
+    @DeleteMapping("/deleteProduct/{id_product}")
+    public String deleteUser(@PathVariable Long id_product){
+        return productsService.deleteProducts(id_product);
     }
 
 }

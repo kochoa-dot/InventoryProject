@@ -3,6 +3,7 @@ package com.inventory.Inventory.controller;
 import com.inventory.Inventory.model.Roles;
 import com.inventory.Inventory.model.Users;
 import com.inventory.Inventory.service.UsersService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +15,7 @@ import java.util.List;
 public class UsersController {
     @Autowired
     private UsersService usersService;
-
+    @Operation(summary = "Get a book by its id")
     @PostMapping("/add")
     public String add(@RequestBody Users users){
         return usersService.saveUser(users);
